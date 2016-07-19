@@ -13,12 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package javase8sample.chapter3.stream;
 import java.util.stream.IntStream;
 
+
 /**
- *
- * @author benhail
+ * @描述: 顺序与并行性能测试对比
+ * 
+ * @作者: 王鹏
+ * @创建时间: 2016年7月19日-下午2:55:49
+ * @版本: 1.0
  */
 public class ParallelStreamTest {
 

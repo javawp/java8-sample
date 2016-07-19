@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.*;
 
 import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.toList;
 
 public class StreamBasic {
 
@@ -38,11 +37,13 @@ public class StreamBasic {
         return lowCaloricDishesName;
     }
 
-    public static List<String> getLowCaloricDishesNamesInJava8(List<Dish> dishes){
+    public static List<String> getLowCaloricDishesNamesInJava8(List<Dish> dishes) {
         return dishes.stream()
                 .filter(d -> d.getCalories() > 400)
                 .sorted(comparing(Dish::getCalories))
                 .map(Dish::getName)
-                .collect(toList());
+                .parallel() // 使用并行流
+                .collect(Collectors.toList());
+//              .collect(Collectors.toCollection(ArrayList::new)); // 指定转换集合
     }
 }
