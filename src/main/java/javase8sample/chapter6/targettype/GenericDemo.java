@@ -19,8 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author benhail
+ * @描述: 泛型自动推断类型
+ * 
+ * @作者: 王鹏
+ * @创建时间: 2016年7月19日-下午3:45:44
+ * @版本: 1.0
  */
 public class GenericDemo<E> {
 
@@ -40,7 +43,11 @@ public class GenericDemo<E> {
         List<String> list = new ArrayList<>();
         list.add("A");
         list.addAll(new ArrayList());
-        GenericDemo gd=new GenericDemo();
-        String s = (String) gd.head();
+        
+        GenericDemo<Integer> nil = GenericDemo.nil(); // 根据返回值的类型, 推断泛型参数类型
+        Integer head = nil.head();
+        
+        GenericDemo<String> cons = GenericDemo.cons("头部", GenericDemo.nil());
+        String head2 = cons.head();
     }
 }
