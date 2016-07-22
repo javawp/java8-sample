@@ -65,7 +65,9 @@ public class StreamBasic {
 	}
 	
 	public static void mapToDoubleInJava8(List<Dish> dishes) {
-		int sum = dishes.parallelStream().mapToInt(Dish::getCalories).sum();
+		int sum = dishes.parallelStream()
+						.mapToInt(Dish::getCalories)
+						.sum();
 		System.out.println("mapToInt [] 计算总和. " + sum);
 	}
 	
