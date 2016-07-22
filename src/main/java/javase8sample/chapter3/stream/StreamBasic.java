@@ -20,6 +20,13 @@ public class StreamBasic {
         
         collectorGroupingByInJava8(Dish.menu);
 
+        System.out.println("---");
+        
+        mapToDoubleInJava8(Dish.menu);
+        
+        System.out.println("---");
+        
+        reduceInJava8(Dish.menu);
     }
 
     public static List<String> getLowCaloricDishesNamesInJava7(List<Dish> dishes){
@@ -55,6 +62,21 @@ public class StreamBasic {
 		dishes.stream().collect(Collectors.groupingBy(Dish::getType)).forEach((i, d) -> {
 			System.out.println("Collectors.groupingBy [分组] -- > [类型]: " + i + " [数量]: " + d.size());
 		});
+	}
+	
+	public static void mapToDoubleInJava8(List<Dish> dishes) {
+		int sum = dishes.parallelStream().mapToInt(Dish::getCalories).sum();
+		System.out.println("mapToInt [] 计算总和. " + sum);
+	}
+	
+	public static void reduceInJava8(List<Dish> dishes) {
+		Integer reduce = dishes.parallelStream()
+							   .map(Dish::getCalories)
+							   .collect(Collectors.toList())
+							   .parallelStream()
+							   .reduce(0, Integer::sum);
+//							   .reduce(0, (a, b) -> a + b);
+		System.out.println("reduce [] 计算总和. " + reduce);
 	}
     
 }
