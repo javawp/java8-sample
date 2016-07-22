@@ -15,6 +15,10 @@ public class StreamBasic {
 
         // Java 8
         getLowCaloricDishesNamesInJava8(Dish.menu).forEach(System.out::println);
+        
+        System.out.println("---");
+        
+        collectorGroupingByInJava8(Dish.menu);
 
     }
 
@@ -46,4 +50,11 @@ public class StreamBasic {
                 .collect(Collectors.toList());
 //              .collect(Collectors.toCollection(ArrayList::new)); // 指定转换集合
     }
+    
+	public static void collectorGroupingByInJava8(List<Dish> dishes) {
+		dishes.stream().collect(Collectors.groupingBy(Dish::getType)).forEach((i, d) -> {
+			System.out.println("Collectors.groupingBy [分组] -- > [类型]: " + i + " [数量]: " + d.size());
+		});
+	}
+    
 }
